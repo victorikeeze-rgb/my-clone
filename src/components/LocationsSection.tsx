@@ -4,7 +4,8 @@ interface Location {
   name: string;
   address: string;
   hours: string;
-  phone: string;
+  phone?: string;
+  email?: string;
   directionsHref: string;
 }
 
@@ -13,7 +14,7 @@ const locations: Location[] = [
     name: "Main Location",
     address: "3100 Plaza Properties Blvd\nColumbus, OH 43219",
     hours: "Mon-Thu 7:00am-4:00pm\nFri 7:00am-3:30pm",
-    phone: "(614) 383-6000",
+    email: "zangcancercentercolombus@gmail.com",
     directionsHref:
       "https://maps.google.com/?q=3100+Plaza+Properties+Blvd+Columbus+OH+43219",
   },
@@ -135,14 +136,25 @@ export function LocationsSection() {
               <div className="location-lines">
                 <p>{renderWithLineBreaks(location.address)}</p>
                 <p>{renderWithLineBreaks(location.hours)}</p>
-                <p>
-                  <a
-                    href={`tel:${location.phone.replace(/\D/g, "")}`}
-                    className="location-phone"
-                  >
-                    {location.phone}
-                  </a>
-                </p>
+                {location.email ? (
+                  <p>
+                    <a
+                      href={`mailto:${location.email}`}
+                      className="location-phone"
+                    >
+                      {location.email}
+                    </a>
+                  </p>
+                ) : location.phone ? (
+                  <p>
+                    <a
+                      href={`tel:${location.phone.replace(/\D/g, "")}`}
+                      className="location-phone"
+                    >
+                      {location.phone}
+                    </a>
+                  </p>
+                ) : null}
                 <a
                   href={location.directionsHref}
                   className="location-directions"
