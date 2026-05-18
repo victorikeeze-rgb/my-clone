@@ -6,18 +6,18 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { name: "Tarek A. Chidiac, MD, FACP", specialty: "Oncology and Hematology", imgSrc: "/images/team-tarek-chidiac.jpg", href: "#" },
-  { name: "Dr. Nicole Baldwin, MD", specialty: "Oncology and Hematology", imgSrc: "/images/dr-nicole.jpeg", href: "#" },
-  { name: "Mark H. Knapp, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-mark-knapp.jpg", href: "#" },
-  { name: "Jeanna L. Knoble, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-jeanna-knoble.jpg", href: "#" },
-  { name: "Sam Mikhail, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-sam-mikhail.jpg", href: "#" },
-  { name: "Christa I Nagel, MD", specialty: "Gynecologic Oncology\nat Main Location", imgSrc: "/images/team-christa-nagel.jpg", href: "#" },
-  { name: "David O'Malley, MD", specialty: "Gynecologic Oncology\nat Main Location", imgSrc: "/images/team-david-omalley.jpg", href: "#" },
-  { name: "Taral Patel, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-taral-patel.jpg", href: "#" },
-  { name: "Jorge A. Rios, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-jorge-rios.jpg", href: "#" },
-  { name: "Hiral A. Shah, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-hiral-shah.jpg", href: "#" },
-  { name: "P. Kothai Sundaram, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-kothai-sundaram.jpg", href: "#" },
-  { name: "Emily M. Whitman, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-emily-whitman.jpg", href: "#" },
+  { name: "Tarek A. Chidiac, MD, FACP", specialty: "Oncology and Hematology", imgSrc: "/images/team-tarek-chidiac.jpg", href: "/team/tarek-a-chidiac" },
+  { name: "Dr. Nicole Baldwin, MD", specialty: "Oncology and Hematology", imgSrc: "/images/dr-nicole.jpeg", href: "/team/nicole-baldwin" },
+  { name: "Mark H. Knapp, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-mark-knapp.jpg", href: "/team/mark-h-knapp" },
+  { name: "Jeanna L. Knoble, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-jeanna-knoble.jpg", href: "/team/jeanna-l-knoble" },
+  { name: "Sam Mikhail, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-sam-mikhail.jpg", href: "/team/sam-mikhail" },
+  { name: "Christa I Nagel, MD", specialty: "Gynecologic Oncology\nat Main Location", imgSrc: "/images/team-christa-nagel.jpg", href: "/team/christa-i-nagel" },
+  { name: "David O'Malley, MD", specialty: "Gynecologic Oncology\nat Main Location", imgSrc: "/images/team-david-omalley.jpg", href: "/team/david-omalley" },
+  { name: "Taral Patel, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-taral-patel.jpg", href: "/team/taral-patel" },
+  { name: "Jorge A. Rios, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-jorge-rios.jpg", href: "/team/jorge-a-rios" },
+  { name: "Hiral A. Shah, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-hiral-shah.jpg", href: "/team/hiral-a-shah" },
+  { name: "P. Kothai Sundaram, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-kothai-sundaram.jpg", href: "/team/p-kothai-sundaram" },
+  { name: "Emily M. Whitman, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-emily-whitman.jpg", href: "/team/emily-m-whitman" },
 ];
 
 export function TeamSection() {
