@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Builder agent worktrees — not part of the production codebase
+    ".claude/worktrees/**",
   ]),
 ]);
 

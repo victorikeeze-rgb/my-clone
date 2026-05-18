@@ -1,9 +1,24 @@
+import Header, { HeaderSentinel } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { TeamSection } from "@/components/TeamSection";
+import { LocationsSection } from "@/components/LocationsSection";
+import { LatestUpdates } from "@/components/LatestUpdates";
+import { Footer } from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
+    <div style={{ position: "relative" }}>
+      <HeaderSentinel />
+      <Header />
+      <main style={{ paddingTop: 0 }}>
+        <HeroSection />
+        <ServicesSection />
+        <TeamSection />
+        <LocationsSection />
+        <LatestUpdates />
+      </main>
+      <Footer />
+    </div>
   );
 }
