@@ -7,7 +7,7 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   { name: "Tarek A. Chidiac, MD, FACP", specialty: "Oncology and Hematology", imgSrc: "/images/team-tarek-chidiac.jpg", href: "/team/tarek-a-chidiac" },
-  { name: "Dr. Nicole Baldwin, MD", specialty: "Oncology and Hematology", imgSrc: "/images/dr-nicole.jpeg", href: "/team/nicole-baldwin" },
+  { name: "Dr. Nicole Baldwin, MD", specialty: "Oncology and Hematology", imgSrc: "/Dr-Nicole.png", href: "/team/nicole-baldwin" },
   { name: "Mark H. Knapp, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-mark-knapp.jpg", href: "/team/mark-h-knapp" },
   { name: "Dr. Karen Y. Tang, MD", specialty: "Oncology and Hematology", imgSrc: "/Dr-Karen.jpeg", href: "/team/karen-y-tang" },
   { name: "Sam Mikhail, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-sam-mikhail.jpg", href: "/team/sam-mikhail" },

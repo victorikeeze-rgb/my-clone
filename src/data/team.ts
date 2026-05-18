@@ -144,7 +144,7 @@ export const teamMembers: TeamMemberBio[] = [
     name: "Nicole Baldwin",
     credentials: "MD",
     specialty: "Oncology and Hematology",
-    photo: "/images/dr-nicole.jpeg",
+    photo: "/Dr-Nicole.png",
     bio: [
       "Dr. Nicole Baldwin graduated summa cum laude from The Ohio State University with bachelor's degrees in chemistry and molecular genetics. She received her medical degree from the Ohio State University College of Medicine and completed her internship and residency in internal medicine at the Ohio State University Wexner Medical Center. Dr. Baldwin then completed a fellowship in hematology and oncology at the University of Illinois Chicago.",
       "Prior to joining the Zangmeister Cancer Center, Dr. Baldwin worked as a medical oncologist and hematologist at OhioHealth Physician Group, where she treated a wide range of cancers and benign hematologic conditions. During her time there, she worked alongside senior oncology specialists, gaining extensive clinical experience and developing a patient-centered approach to cancer care.",
