@@ -31,15 +31,16 @@ export const teamMembers: TeamMemberBio[] = [
     ],
   },
   {
-    slug: "jeanna-l-knoble",
-    name: "Jeanna L. Knoble",
+    slug: "karen-y-tang",
+    name: "Karen Y. Tang",
     credentials: "MD",
     specialty: "Oncology and Hematology",
-    photo: "/images/team-jeanna-knoble.jpg",
+    photo: "/Dr-Karen.jpeg",
     bio: [
-      "A summa cum laude graduate of Miami University with a bachelor's degree in microbiology and a member of Phi Beta Kappa, Dr. Knoble received her medical degree from The Ohio State University Department of Medicine and Public Health. She completed her residency in internal medicine at The Ohio State University Medical Center and a fellowship in hematology/medical oncology at The University of Virginia Health System in Charlottesville, Virginia. She worked as an attending physician at Grant Medical Center and Augusta Medical Center in Fishersville, Virginia, prior to completing her fellowship. She treats all cancer and blood disorders, with a special interest in breast, pancreatic and hematologic malignancies, and in blood clotting abnormalities.",
-      "Dr. Knoble has served on the Multidisciplinary Committee for Pancreatic Cancer and is the current co-medical director of the Breast Cancer Program at Mount Carmel Health System. She is active in the research program at The Zangmeister Center and is principal investigator of several current trials that are open to enrollment. Dr. Knoble is Board-certified in hematology, medical oncology and internal medicine by The American Board of Internal Medicine. She is a member of the American College of Physicians, American Society of Hematology, American Society of Clinical Oncology, Community Oncology Alliance, Columbus Medical Association, Ohio State Medical Association and the Ohio Hematology Oncology Society.",
-      "Dr. Knoble has a passion for sports, music and her Labrador retriever. She is an avid runner and competes in many distance races including several Boston Marathons.",
+      "Dr. Karen Tang is a graduate of the University of Cincinnati College of Medicine, where she completed her internship and residency in internal medicine, followed by fellowship training in hematology and medical oncology.",
+      "She is actively involved in clinical research as a principal investigator at the Zangmeister Cancer Center and has served in advisory and committee roles within national oncology research networks. Dr. Tang is board-certified in internal medicine, medical oncology, and hematology.",
+      "In her leadership role, she oversees oncology patient services and coordinates prescription management, including the organization and distribution of cancer medications for patients in treatment.",
+      "She is a member of several professional organizations, including the American Society of Hematology and the American Society of Clinical Oncology.",
     ],
   },
   {
