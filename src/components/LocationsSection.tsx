@@ -22,7 +22,7 @@ const locations: Location[] = [
     name: "Grove City",
     address: "5500 North Meadows Dr, Suite 220\nGrove City, OH 43123",
     hours: "Mon-Thu 7:00am-4:00pm\nFri 7:00am-12:00pm",
-    phone: "(614) 347-4939",
+    email: "zangcancercentercolombus@gmail.com",
     directionsHref:
       "https://maps.google.com/?q=5500+North+Meadows+Dr+Suite+220+Grove+City+OH+43123",
   },
