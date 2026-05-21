@@ -195,6 +195,14 @@ export default async function ServicePage({
                 {section.body.split("\n\n").map((para, j) => (
                   <p key={j}>{para}</p>
                 ))}
+                {section.contactEmail && (
+                  <p>
+                    For prescription refills or other information, contact the pharmacy at{" "}
+                    <a href={`mailto:${section.contactEmail}`} style={{ color: "#a3631f" }}>
+                      {section.contactEmail}
+                    </a>
+                  </p>
+                )}
               </div>
             ))}
           </main>

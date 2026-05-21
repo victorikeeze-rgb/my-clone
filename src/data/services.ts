@@ -1,6 +1,7 @@
 export interface ServiceSection {
   heading?: string;
   body: string;
+  contactEmail?: string;
 }
 
 export interface ServiceData {
@@ -230,7 +231,8 @@ export const services: ServiceData[] = [
       },
       {
         heading: "In-House Specialty Pharmacy Services",
-        body: "We provide in-house specialty pharmacy services with experienced staff who will provide you with:\n\n• Answers to your specialty medication questions from experienced oncology pharmacists who are available 24/7\n• Assistance with insurance issues, such as prior authorizations\n• Reminder calls to refill prescriptions\n• Fast, convenient FedEx delivery of medications at no additional charge\n• Financial assistance that may be available to help pay for medications\n\nFor prescription refills or other information, please call 239-318-6285 or toll-free at 833-886-1725.",
+        body: "We provide in-house specialty pharmacy services with experienced staff who will provide you with:\n\n• Answers to your specialty medication questions from experienced oncology pharmacists who are available 24/7\n• Assistance with insurance issues, such as prior authorizations\n• Reminder calls to refill prescriptions\n• Fast, convenient FedEx delivery of medications at no additional charge\n• Financial assistance that may be available to help pay for medications",
+        contactEmail: "zangmeisterrx@gmail.com",
       },
     ],
   },
