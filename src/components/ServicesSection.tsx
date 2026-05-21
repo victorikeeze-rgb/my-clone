@@ -7,8 +7,8 @@ const services = [
     title: "Medical Oncology",
     description:
       "We use chemotherapy, biological agents or other medications, such as targeted therapies, immunotherapy and oral (pill form) chemotherapy, to treat cancer.",
-    ctaText: "View cancers we treat >",
-    ctaHref: "#",
+    ctaText: "Learn more >",
+    ctaHref: "/services/medical-oncology",
     imgSrc: "/images/service-medical-oncology.jpg",
     imgAlt: "Image for Medical Oncology",
   },
@@ -16,8 +16,8 @@ const services = [
     title: "Hematology",
     description:
       "We treat patients with all types of hematologic malignancies, including rare blood-based liquid tumors and autoimmune abnormalities.",
-    ctaText: "Learn more about this service >",
-    ctaHref: "#",
+    ctaText: "Learn more >",
+    ctaHref: "/services/hematology",
     imgSrc: "/images/service-hematology.jpg",
     imgAlt: "Image for Hematology",
   },
@@ -25,8 +25,8 @@ const services = [
     title: "Gynecologic Oncology",
     description:
       "We provide specialized diagnosis, treatment, and support for women with cancers of the reproductive system.",
-    ctaText: "How to access this service >",
-    ctaHref: "#",
+    ctaText: "Learn more >",
+    ctaHref: "/services/gynecologic-oncology",
     imgSrc: "/images/service-gynecologic-oncology.jpg",
     imgAlt: "Image for Gynecologic Oncology",
   },
@@ -34,8 +34,8 @@ const services = [
     title: "BiTE Therapy",
     description:
       "BiTE therapy links T cells to cancer cells, boosting immune response with precision and fewer side effects than traditional treatments.",
-    ctaText: "See how BiTE works >",
-    ctaHref: "#",
+    ctaText: "Learn more >",
+    ctaHref: "/services/bite-therapy",
     imgSrc: "/images/service-bite-therapy.jpg",
     imgAlt: "Image for BiTE Therapy",
   },
@@ -44,7 +44,7 @@ const services = [
     description:
       "We offer specialty infusion therapies for patients with chronic diseases or conditions to treat anemia, Crohn's, multiple sclerosis, rheumatoid arthritis and more.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/specialty-infusion-services",
     imgSrc: "/images/service-specialty-infusion.jpg",
     imgAlt: "Image for Specialty Infusion Services",
   },
@@ -53,7 +53,7 @@ const services = [
     description:
       "We continue to invest in technologies that provide precise views of internal organs, bones, soft tissues and blood vessels with immense clarity and detail.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/diagnostic-imaging",
     imgSrc: "/images/service-diagnostic-imaging.jpg",
     imgAlt: "Image for Diagnostic Imaging",
   },
@@ -62,7 +62,7 @@ const services = [
     description:
       "RLT therapy delivers radiation directly to cancer cells, reducing exposure to healthy tissue and minimizing side effects.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/radioligand-therapy",
     imgSrc: "/images/service-radioligand-therapy.jpg",
     imgAlt: "Image for Radioligand Therapy",
   },
@@ -71,7 +71,7 @@ const services = [
     description:
       'One of the newest and most advanced ways to help physicians assess your options is to identify the biomarkers - "targets" that are specific to your cancer.',
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/molecular-targeted-therapy",
     imgSrc: "/images/service-molecular-targeted.jpg",
     imgAlt: "Image for Molecular-Targeted Therapy",
   },
@@ -80,7 +80,7 @@ const services = [
     description:
       "We serve our patients' laboratory needs locally, reducing their trips to multiple locations often required for routine and specialized laboratory testing.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/pathology",
     imgSrc: "/images/service-pathology.jpg",
     imgAlt: "Image for Pathology",
   },
@@ -89,7 +89,7 @@ const services = [
     description:
       "The use of oral oncolytic medications in cancer treatment is fast growing. We provide in-house specialty pharmacy services with experienced staff.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/pharmacy",
     imgSrc: "/images/service-pharmacy.jpg",
     imgAlt: "Image for Pharmacy",
   },
@@ -98,7 +98,7 @@ const services = [
     description:
       "The journey you are about to begin can be confusing and difficult. Your team will be invaluable in helping you successfully navigate the treatment process.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/care-coordination",
     imgSrc: "/images/service-care-coordination.jpg",
     imgAlt: "Image for Care Coordination & Navigation",
   },
@@ -107,7 +107,7 @@ const services = [
     description:
       "Our goal is to give patients the opportunity to participate in approved and exploratory therapies without long-distance travel.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/clinical-trials",
     imgSrc: "/images/service-clinical-trials.jpg",
     imgAlt: "Image for Clinical Trials",
   },
@@ -116,7 +116,7 @@ const services = [
     description:
       "You will meet with a financial counselor during one of your initial visits and at any time that you have questions about your account or insurance coverage.",
     ctaText: "Learn more >",
-    ctaHref: "#",
+    ctaHref: "/services/financial-support",
     imgSrc: "/images/service-financial-support.jpg",
     imgAlt: "Image for Financial Support",
   },
@@ -136,7 +136,7 @@ function ServiceCard({ service }: { service: Service }) {
     <div className="service-card">
       <img src={service.imgSrc} alt={service.imgAlt} />
       <div className="service-card-title">
-        <a href="#">{service.title}</a>
+        <a href={service.ctaHref}>{service.title}</a>
       </div>
       <div className="service-card-content">{service.description}</div>
       <div className="service-card-cta">
