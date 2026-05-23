@@ -15,7 +15,7 @@ const teamMembers: TeamMember[] = [
   { name: "David O'Malley, MD", specialty: "Gynecologic Oncology\nat Main Location", imgSrc: "/images/team-david-omalley.jpg", href: "/team/david-omalley" },
   { name: "Taral Patel, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-taral-patel.jpg", href: "/team/taral-patel" },
   { name: "Jorge A. Rios, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-jorge-rios.jpg", href: "/team/jorge-a-rios" },
-  { name: "Hiral A. Shah, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-hiral-shah.jpg", href: "/team/hiral-a-shah" },
+  { name: "Lila Marston, MD", specialty: "Oncology and Hematology", imgSrc: "/Dr-Lila.jpeg", href: "/team/lila-marston" },
   { name: "P. Kothai Sundaram, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-kothai-sundaram.jpg", href: "/team/p-kothai-sundaram" },
   { name: "Emily M. Whitman, MD", specialty: "Oncology and Hematology", imgSrc: "/images/team-emily-whitman.jpg", href: "/team/emily-m-whitman" },
 ];
