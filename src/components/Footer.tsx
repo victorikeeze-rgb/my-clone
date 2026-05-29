@@ -16,8 +16,6 @@ const ourServicesLinks = [
 
 const forPatientsLinks = [
   { label: "New Patient Information", href: "#" },
-  { label: "Patient Portal", href: "#" },
-  { label: "Make a Payment", href: "#" },
   { label: "Patient Stories", href: "#" },
   { label: "Blogs", href: "#" },
   { label: "CanCare", href: "#" },

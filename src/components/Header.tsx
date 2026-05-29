@@ -4,13 +4,67 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const NAV_ITEMS = [
-  { label: "FOR PATIENTS", href: "#" },
-  { label: "OUR SERVICES", href: "#services" },
-  { label: "LOCATIONS", href: "#locations" },
-  { label: "ABOUT US", href: "#" },
-  { label: "CONTACT US", href: "#" },
-] as const;
+type SubItem = { label: string; href: string; external?: boolean };
+type NavItemConfig =
+  | { label: string; href: string; dropdown?: never }
+  | { label: string; href?: never; dropdown: SubItem[] };
+
+const NAV_ITEMS: NavItemConfig[] = [
+  {
+    label: "FOR PATIENTS",
+    dropdown: [
+      { label: "New Patient Information", href: "/new-patient-information" },
+      { label: "Patient Stories", href: "/patient-story" },
+      { label: "Resources", href: "https://www.aoncology.com/patient-resources/", external: true },
+      { label: "American Oncology Cares", href: "/american-oncology-cares" },
+      { label: "CanCare", href: "/cancare" },
+    ],
+  },
+  {
+    label: "OUR SERVICES",
+    dropdown: [
+      { label: "Medical Oncology", href: "/services/medical-oncology" },
+      { label: "Hematology", href: "/services/hematology" },
+      { label: "Gynecologic Oncology", href: "/services/gynecologic-oncology" },
+      { label: "BiTE Therapy", href: "/services/bite-therapy" },
+      { label: "Specialty Infusion Services", href: "/services/specialty-infusion-services" },
+      { label: "Diagnostic Imaging", href: "/services/diagnostic-imaging" },
+      { label: "Radioligand Therapy", href: "/services/radioligand-therapy" },
+      { label: "Molecular-Targeted Therapy", href: "/services/molecular-targeted-therapy" },
+      { label: "Pathology", href: "/services/pathology" },
+      { label: "Pharmacy", href: "/services/pharmacy" },
+      { label: "Care Coordination & Navigation", href: "/services/care-coordination" },
+      { label: "Clinical Trials", href: "/services/clinical-trials" },
+      { label: "Financial Support", href: "/services/financial-support" },
+    ],
+  },
+  { label: "LOCATIONS", href: "/#locations" },
+  {
+    label: "ABOUT US",
+    dropdown: [
+      { label: "About Us", href: "/about-us" },
+      { label: "Your Team", href: "/your-team" },
+      { label: "OSU James Cancer Network", href: "/jcn" },
+      { label: "Careers", href: "https://www.aoncology.com/apply/ZCC", external: true },
+    ],
+  },
+  {
+    label: "CONTACT US",
+    dropdown: [
+      { label: "Contact Us", href: "/#locations" },
+      { label: "Patient Referral", href: "https://www.aoncology.com/policies/ZCC_RF.pdf", external: true },
+      { label: "Diagnostic Referral", href: "https://www.zangcenter.com/wp-content/uploads/2024/04/11430_AON_ZCC_Diagnostic-Referral-Request_Form_0822_FINAL.pdf", external: true },
+    ],
+  },
+];
+
+const MOBILE_FALLBACK: Record<string, string> = {
+  "FOR PATIENTS": "/new-patient-information",
+  "OUR SERVICES": "/services/medical-oncology",
+  "LOCATIONS": "/#locations",
+  "ABOUT US": "/about-us",
+  "CONTACT US": "/#locations",
+};
 
 const headerStyles = `
   header.zcc-header {
@@ -62,6 +116,7 @@ const headerStyles = `
 
   .header-nav { grid-area: menu; justify-self: end; margin-top: 1rem; }
   .header-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 0; }
+  .header-nav li { position: relative; }
   .header-nav a, .header-nav button {
     color: white;
     text-transform: uppercase;
@@ -79,6 +134,41 @@ const headerStyles = `
     white-space: nowrap;
   }
   .header-nav a:hover, .header-nav button:hover { color: rgba(255,255,255,0.75); }
+
+  /* Dropdown chevron */
+  .nav-btn-dropdown::after {
+    content: ' ▾';
+    font-size: 0.65em;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+
+  /* Dropdown panel */
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 14rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 200;
+    border-top: 3px solid #2c5234;
+  }
+  .nav-dropdown a {
+    color: #2c5234 !important;
+    text-transform: none !important;
+    font-size: 0.875rem !important;
+    font-weight: normal !important;
+    padding: 0.55rem 1.1rem !important;
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    letter-spacing: 0 !important;
+    line-height: 1.4 !important;
+  }
+  .nav-dropdown a:last-child { border-bottom: none; }
+  .nav-dropdown a:hover { background: #f5f9f6; color: #2c5234 !important; }
 
   .header-mobile-dropdown {
     background-color: #2c5234;
@@ -125,36 +215,40 @@ export function HeaderSentinel() {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const sentinelRef = useRef<Element | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const sentinel = document.getElementById("header-observer");
     if (!sentinel) return;
-
-    sentinelRef.current = sentinel;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        // When sentinel is NOT intersecting, user has scrolled past it
-        setScrolled(!entry.isIntersecting);
-      },
+      ([entry]) => setScrolled(!entry.isIntersecting),
       { threshold: 0 }
     );
-
     observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
 
-    return () => {
-      observer.disconnect();
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
     };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Search handling — extend as needed
     if (searchQuery.trim()) {
       window.location.href = `#search?q=${encodeURIComponent(searchQuery.trim())}`;
     }
+  };
+
+  const toggleDropdown = (label: string) => {
+    setOpenDropdown((prev) => (prev === label ? null : label));
   };
 
   return (
@@ -188,7 +282,6 @@ export default function Header() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <button type="submit" aria-label="Submit search">
-                {/* Magnifying glass icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -209,11 +302,50 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="header-nav" aria-label="Main navigation">
+          <nav className="header-nav" aria-label="Main navigation" ref={navRef}>
             <ul>
               {NAV_ITEMS.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href}>{item.label}</a>
+                  {item.dropdown ? (
+                    <>
+                      <button
+                        className="nav-btn-dropdown"
+                        aria-expanded={openDropdown === item.label}
+                        onClick={() => toggleDropdown(item.label)}
+                      >
+                        {item.label}
+                      </button>
+                      {openDropdown === item.label && (
+                        <div className="nav-dropdown" role="menu">
+                          {item.dropdown.map((sub) =>
+                            sub.external ? (
+                              <a
+                                key={sub.label}
+                                href={sub.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                role="menuitem"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                {sub.label}
+                              </a>
+                            ) : (
+                              <Link
+                                key={sub.label}
+                                href={sub.href}
+                                role="menuitem"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                {sub.label}
+                              </Link>
+                            )
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <a href={item.href}>{item.label}</a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -236,16 +368,16 @@ export default function Header() {
           <div className="header-mobile-dropdown" id="mobile-nav">
             <nav aria-label="Mobile navigation">
               <ul>
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+                {NAV_ITEMS.map((item) => {
+                  const href = item.href ?? MOBILE_FALLBACK[item.label] ?? "/";
+                  return (
+                    <li key={item.label}>
+                      <a href={href} onClick={() => setMenuOpen(false)}>
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>
